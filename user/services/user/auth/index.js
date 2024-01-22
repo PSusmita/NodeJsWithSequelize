@@ -1,3 +1,4 @@
 module.exports={
-    "REGISTRATION":require("./registration")
+    "REGISTRATION":require("./registration"),
+    "LOGIN":require("./login"),
 };

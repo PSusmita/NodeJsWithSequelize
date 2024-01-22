@@ -1,3 +1,4 @@
 module.exports = {
-    "REGISTER": require("./registration")
+    "REGISTER": require("./registration"),
+    "LOGIN":require("./login"),
 };

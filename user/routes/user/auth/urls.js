@@ -1,3 +1,4 @@
 module.exports={
-    "REGISTER":"/register"
+    "REGISTER":"/register",
+    "LOGIN":"/login",
 };

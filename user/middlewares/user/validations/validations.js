@@ -11,11 +11,25 @@ async function uservalidaton(obj) {
             "password": yup.string().min(8).max(12).required("Please set your password")
         });
         await validateUserSchema.validate(obj);
-        return STATUS?.TRUE;
+        return (STATUS?.TRUE);
     }
     catch (error) {
-        return await ERRORS?.errorResponse(error);
+        return (await ERRORS?.errorResponse(error));
     }
 };
 
-module.exports = { uservalidaton };
+async function loginDataValidation(obj) {
+    try {
+        const validateLoginData = yup.object({
+            "email": yup.string().email().required("Please enter your email"),
+            "password": yup.string().min(8).max(12).required("Please provide your password properly")
+        });
+        await validateLoginData.validate(obj);
+        return (STATUS?.TRUE);
+    }
+    catch (error) {
+        return (await ERRORS?.errorResponse(error));
+    }
+}
+
+module.exports = { uservalidaton, loginDataValidation };

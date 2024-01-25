@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
         };
         const isLoginDataValidated = await VALIDATOR?.loginDataValidation(loginData);
         if (isLoginDataValidated) {
-            const isExistedUser = await AUTHSERVICE?.ISEXISTUSER(loginData?.email);
+            const isExistedUser = await AUTHSERVICE?.ISEXIST_USER(loginData?.email);
             if (isExistedUser) {
                 const isLogin = await AUTHSERVICE?.LOGIN(loginData);
                 if (isLogin?.status) {

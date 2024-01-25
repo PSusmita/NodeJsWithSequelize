@@ -9,9 +9,9 @@ async function errorResponse(error) {
 };
 
 async function falseResponseAndMessage(message) {
-    return{
-        "status":STATUS?.FALSE,
-        "message":`${message}`
+    return {
+        "status": STATUS?.FALSE,
+        "message": `${message}`
     }
 };
 

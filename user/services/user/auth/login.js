@@ -1,5 +1,3 @@
-const { sequelize } = require("sequelize");
-const bcrypt = require("bcrypt");
 const { User } = require("../../../models/index");
 const AUTHSERVICE = require("./index");
 const GENERATOR = require("../../../middlewares/user/authentications/generateToken");
@@ -14,18 +12,11 @@ module.exports = async (loginData) => {
         const isExistPassWord = await AUTHSERVICE.CHECK_PASSWORD(loginData?.password, getUser?.password);
         if (isExistPassWord) {
             const isGeneratedToken = await GENERATOR?.generateToken(getUser);
-            if(isGeneratedToken?.status){
-                let userLoginObj={
-                    "status":STATUS?.TRUE,
-                    "id":getUser?.id,
-                    "email":getUser?.email,
-                    "token":isGeneratedToken?.token,
-                    "messsage":MESSAGE?.LOGIN_SUCCESS
-                }
-                return userLoginObj;
+            if (isGeneratedToken?.status) {
+                return returnLoginData(getUser, isGeneratedToken?.token);
             }
-            else{
-                return(isGeneratedToken);
+            else {
+                return (isGeneratedToken);
             }
         }
         else {
@@ -37,9 +28,16 @@ module.exports = async (loginData) => {
     }
 };
 
-async function returnLoginData(getUser,accessToken) {
+async function returnLoginData(getUser, accessToken) {
     try {
-
+        let userLoginObj = {
+            "status": STATUS?.TRUE,
+            "id": getUser?.id,
+            "email": getUser?.email,
+            "token": accessToken,
+            "messsage": MESSAGE?.LOGIN_SUCCESS
+        }
+        return userLoginObj;
     }
     catch (error) {
         return await ERROR.errorResponse(error);

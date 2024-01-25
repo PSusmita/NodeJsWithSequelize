@@ -1,4 +1,4 @@
-const STATUS=require("../status/status");
+const STATUS = require("../status/status");
 
 //*IF ANY CODE GET TO CACHE*//
 async function errorResponse(error) {
@@ -8,4 +8,11 @@ async function errorResponse(error) {
     }
 };
 
-module.exports = { errorResponse };
+async function falseResponseAndMessage(message) {
+    return{
+        "status":STATUS?.FALSE,
+        "message":`${message}`
+    }
+};
+
+module.exports = { errorResponse, falseResponseAndMessage };

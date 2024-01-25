@@ -1,6 +1,6 @@
 const crypto = require("crypto");
 const SERVICE = require("../../../services/user/auth/index");
-const VALIDATOR = require("../../../middlewares/user/validations/validations");
+const VALIDATOR = require("../../../middlewares/user/validations/userDataValidations");
 const STATUS = require("../../../static/core/status/status");
 const MESSAGE = require("../../../static/core/messages/message");
 const STATUSCODE = require("../../../static/core/statuscode/statusCode");

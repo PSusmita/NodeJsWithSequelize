@@ -13,9 +13,9 @@ module.exports = async (req, res, next) => {
          "password": req?.body?.password
       };
       const isUserDataValidated = await VALIDATOR?.uservalidaton(userData);
-      if (isUserDataValidated === STATUS?.TRUE) {
+      if (isUserDataValidated) {
          const isDataSaved = await SERVICE?.REGISTRATION(userData);
-         if (isDataSaved === STATUS?.TRUE) {
+         if (isDataSaved) {
             res.status(STATUSCODE?.CREATE_CODE).json({ "status": STATUS?.TRUE, message: MESSAGE?.REG_SUCCESS });
          }
          else {

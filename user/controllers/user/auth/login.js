@@ -1,7 +1,7 @@
 
 const VALIDATOR = require("../../../middlewares/user/validations/userDataValidations");
 const STATUS = require("../../../static/core/status/status");
-const AUTHSERVICE = require("../../../services/user/auth/index");
+const SERVICE = require("../../../services/user/auth/index");
 
 
 module.exports = async (req, res, next) => {
@@ -12,9 +12,9 @@ module.exports = async (req, res, next) => {
         };
         const isLoginDataValidated = await VALIDATOR?.loginDataValidation(loginData);
         if (isLoginDataValidated) {
-            const isExistedUser = await AUTHSERVICE?.ISEXIST_USER(loginData?.email);
-            if (isExistedUser) {
-                const isLogin = await AUTHSERVICE?.LOGIN(loginData);
+            const isExistedUser = await SERVICE?.ISEXIST_USER(loginData?.email);
+            if (isExistedUser && isExistedUser === STATUS?.TRUE) {
+                const isLogin = await SERVICE?.LOGIN(loginData);
                 if (isLogin?.status) {
                     res.json(isLogin);
                 }

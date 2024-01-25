@@ -4,6 +4,8 @@ const VALIDATOR = require("../../../middlewares/user/validations/userDataValidat
 const STATUS = require("../../../static/core/status/status");
 const MESSAGE = require("../../../static/core/messages/message");
 const STATUSCODE = require("../../../static/core/statuscode/statusCode");
+const ERROR = require("../../../static/core/error/errors");
+
 module.exports = async (req, res, next) => {
    try {
       const userData = {
@@ -14,12 +16,18 @@ module.exports = async (req, res, next) => {
       };
       const isUserDataValidated = await VALIDATOR?.uservalidaton(userData);
       if (isUserDataValidated) {
-         const isDataSaved = await SERVICE?.REGISTRATION(userData);
-         if (isDataSaved) {
-            res.status(STATUSCODE?.CREATE_CODE).json({ "status": STATUS?.TRUE, message: MESSAGE?.REG_SUCCESS });
+         const isExistedUser = await SERVICE?.ISEXIST_USER(userData?.email);
+         if (isExistedUser && isExistedUser === STATUS?.TRUE) {
+            res.json(await ERROR.falseResponseAndMessage(MESSAGE?.EXISTED_USER));
          }
          else {
-            res.json({ "status": STATUS?.FALSE, message: MESSAGE?.REG_FAILED });
+            const isDataSaved = await SERVICE?.REGISTRATION(userData);
+            if (isDataSaved) {
+               res.status(STATUSCODE?.CREATE_CODE).json({ "status": STATUS?.TRUE, message: MESSAGE?.REG_SUCCESS });
+            }
+            else {
+               res.json({ "status": STATUS?.FALSE, message: MESSAGE?.REG_FAILED });
+            }
          }
       }
       else {

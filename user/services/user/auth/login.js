@@ -8,7 +8,7 @@ require("dotenv").config();
 
 module.exports = async (loginData) => {
     try {
-        const getUser = await User.findOne({ "email": loginData?.email });
+        const getUser = await User.findOne({ "where": { "email": loginData?.email } });
         const isExistPassWord = await CHECK_PASSWORD(loginData?.password, getUser?.password);
         if (isExistPassWord) {
             const isGeneratedToken = await GENERATOR?.generateToken(getUser?.dataValues);

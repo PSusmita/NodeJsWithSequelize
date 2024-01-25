@@ -1,8 +1,6 @@
-
 const VALIDATOR = require("../../../middlewares/user/validations/userDataValidations");
 const STATUS = require("../../../static/core/status/status");
 const SERVICE = require("../../../services/user/auth/index");
-
 
 module.exports = async (req, res, next) => {
     try {

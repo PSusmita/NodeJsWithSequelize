@@ -1,5 +1,4 @@
 const bcrypt = require("bcrypt");
-const { User } = require("../../../models/index");
 const STATUS = require("../../../static/core/status/status");
 const ERROR = require("../../../static/core/error/errors");
 

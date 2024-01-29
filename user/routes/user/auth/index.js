@@ -8,5 +8,6 @@ module.exports = () => {
   router.post(URLS?.REGISTER, USER?.REGISTER);
   router.post(URLS?.LOGIN,USER?.LOGIN);
   router.get(URLS?.PROFILE,AUTHENTICATION?.verifyUserToken,USER?.PROFILE);
+  router.put(URLS?.UPDATE,AUTHENTICATION?.verifyUserToken,USER?.UPDATE);
   return router;
 };

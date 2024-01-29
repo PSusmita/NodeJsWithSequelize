@@ -1,4 +1,5 @@
 module.exports={
     "TRUE":true,
-    "FALSE":false
+    "FALSE":false,
+    "ZERO":0,
 };

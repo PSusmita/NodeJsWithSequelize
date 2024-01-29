@@ -5,7 +5,7 @@ const ERROR = require("../../../static/core/error/errors");
 
 module.exports = async (userId) => {
     try {
-        const isUserDetails = await User.findOne({ "where": { "id": userId } });
+        const isUserDetails = await User.findOne({ "where": { "id": userId }, "attributes": ["id", "name", "email"] });
         if (isUserDetails === null) {
             return ({ "status": STATUS?.FALSE, "message": MESSAGE?.UNEXISTED_USER });
         }

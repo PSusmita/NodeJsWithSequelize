@@ -1,8 +1,8 @@
 const express=require("express");
 const router=express.Router();
-const urls=require("./urls");
+const URLS=require("./urls");
 
 module.exports=()=>{
-    router.use(urls?.USER,require("./user/index")());
+    router.use(URLS?.USER,require("./user/index")());
     return router;
 }

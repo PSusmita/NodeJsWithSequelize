@@ -1,8 +1,8 @@
 const express=require("express");
 const router=express.Router();
-const urls=require("./urls");
+const URLS=require("./urls");
 
 module.exports=()=>{
-    router.use(urls?.AUTH,require("./auth/index")());
+    router.use(URLS?.AUTH,require("./auth/index")());
     return router;
 }

@@ -9,10 +9,9 @@ module.exports = async (req, res, next) => {
             res.json(await ERROR?.falseResponseAndMessage(MESSAGE?.UNAUTHORIZED));
         }
         else {
-            const userId = USER.id;
-            const isExistUser = await SERVICE?.ISEXIST_ID(userId);
+            const isExistUser = await SERVICE?.ISEXIST_ID(USER.id);
             if (isExistUser === STATUS?.TRUE) {
-                const getUserDetails = await SERVICE?.VIEW_PROFILE(userId);
+                const getUserDetails = await SERVICE?.VIEW_PROFILE(USER.id);
                 if (getUserDetails?.status === STATUS?.TRUE) {
                     res.json(getUserDetails);
                 }

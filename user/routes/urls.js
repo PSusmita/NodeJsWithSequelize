@@ -1,3 +1,4 @@
-module.exports={
-    "USER":"/user"
+module.exports = {
+    "USER": "/user",
+    "REMINDER": "/reminder",
 };

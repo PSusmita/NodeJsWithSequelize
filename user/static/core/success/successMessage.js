@@ -1,5 +1,5 @@
 const STATUS = require("../status/status");
-const MESSAGE = require("../messages/message");
+const MESSAGE = require("../messages/userMessage");
 const ERROR = require("../error/errors");
 
 async function successResponse(message) {

@@ -2,7 +2,7 @@ const { User } = require("../../../models/index");
 const CHECK_PASSWORD = require("./checkPassword");
 const GENERATOR = require("../../../middlewares/user/authentications/generateToken");
 const STATUS = require("../../../static/core/status/status");
-const MESSAGE = require("../../../static/core/messages/message");
+const MESSAGE = require("../../../static/core/messages/userMessage");
 const ERROR = require("../../../static/core/error/errors");
 require("dotenv").config();
 

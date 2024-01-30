@@ -6,5 +6,6 @@ const AUTHENTICATION = require("../../../middlewares/user/authentications/authen
 
 module.exports = () => {
     router.post(URLS?.CREATE, AUTHENTICATION?.verifyUserToken, REMINDER?.CREATE);
+    router.get(URLS?.GET, AUTHENTICATION?.verifyUserToken, REMINDER?.GET);
     return router;
 };

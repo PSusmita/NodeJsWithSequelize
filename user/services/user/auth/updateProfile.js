@@ -1,6 +1,6 @@
 const { User } = require("../../../models/index");
 const STATUS = require("../../../static/core/status/status");
-const MESSAGE = require("../../../static/core/messages/message");
+const MESSAGE = require("../../../static/core/messages/userMessage");
 const SUCCESSMESSAGE = require("../../../static/core/success/successMessage");
 const ERROR = require("../../../static/core/error/errors");
 

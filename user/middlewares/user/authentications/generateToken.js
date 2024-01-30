@@ -1,6 +1,6 @@
 const JWT = require("jsonwebtoken");
 const STATUS = require("../../../static/core/status/status");
-const MESSAGE = require("../../../static/core/messages/message");
+const MESSAGE = require("../../../static/core/messages/userMessage");
 const ERROR = require("../../../static/core/error/errors");
 require("dotenv").config();
 const SECRET_KEY = process.env.SECRET_KEY;

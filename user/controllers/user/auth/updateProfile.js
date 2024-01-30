@@ -1,6 +1,6 @@
 const SERVICE = require("../../../services/user/auth/index");
 const STATUS = require("../../../static/core/status/status");
-const MESSAGE = require("../../../static/core/messages/message");
+const MESSAGE = require("../../../static/core/messages/userMessage");
 const ERROR = require("../../../static/core/error/errors");
 
 module.exports = async (req, res, next) => {

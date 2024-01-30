@@ -1,7 +1,7 @@
 const JWT = require("jsonwebtoken");
 require("dotenv").config();
 const STATUS = require("../../../static/core/status/status");
-const MESSAGE = require("../../../static/core/messages/message");
+const MESSAGE = require("../../../static/core/messages/userMessage");
 const ERROR = require("../../../static/core/error/errors");
 async function verifyUserToken(req, res, next) {
     try {

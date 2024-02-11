@@ -10,7 +10,7 @@ const ERROR = require("../../static/core/error/errors");
 module.exports = async (req, res, next) => {
     try {
         if (!USER) {
-            return await ERROR?.falseResponseAndMessage(MESSAGE?.UNAUTHORIZED);
+            res.json(await ERROR?.falseResponseAndMessage(MESSAGE?.UNAUTHORIZED));
         }
         else {
             const isExistUser = await AUTHSERVICE?.ISEXIST_ID(USER?.id);
@@ -19,6 +19,7 @@ module.exports = async (req, res, next) => {
                     "id": crypto.randomBytes(3).toString("hex"),
                     "userId": USER?.id,
                     "reminder": req?.body?.reminder,
+                    "reminderDate":req?.body?.reminderDate,
                     "reminderTime": req?.body?.reminderTime
                 }
                 const isReminderSaved = await SERVICE?.CREATE(reminderCreationData);

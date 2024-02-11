@@ -17,9 +17,13 @@ module.exports = (sequelize, DataTypes) => {
             "type": DataTypes.STRING,
             "allowNull": true
         },
-        "reminderTime": {
+        "reminderDate": {
             "type": DataTypes.STRING,
             "allowNull": true
+        },
+        "reminderTime":{
+            "type":DataTypes?.STRING,
+            "allowNull":true
         }
     });
     return reminder;

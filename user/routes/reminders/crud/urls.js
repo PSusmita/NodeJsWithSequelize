@@ -4,5 +4,6 @@ module.exports = {
     "GET_ALL": "/getAll",
     "UPDATE": "/update",
     "DELETE": "/delete",
-    "UPDATE_ALL": "/updateAll"
+    "UPDATE_ALL": "/updateAll",
+    "SEARCH": "/search",
 };

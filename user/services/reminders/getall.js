@@ -3,15 +3,31 @@ const STATUS = require("../../static/core/status/status");
 const MESSAGE = require("../../static/core/messages/reminderMessage");
 const ERROR = require("../../static/core/error/errors");
 
-
-module.exports = async (userId) => {
+module.exports = async (page, limit, userId) => {
     try {
-        const isGetAllReminders = await Reminder.findAll({ "where": { "userId": userId } }, { "attributes": ["reminder", "reminderDate", "reminderTime"] });
-        if (isGetAllReminders) {
-            return ({ "status": STATUS?.TRUE, "reminders": isGetAllReminders?.dataValues });
+        let totalReminders = [];
+        let isGetAllReminders = [];
+        let tarnsformed = {};
+        totalReminders = await Reminder.findAll({ "attributes": ["reminder", "reminderDate", "reminderTime"], "where": { "userId": userId } });
+
+        isGetAllReminders = await Reminder.findAll({ "attributes": ["reminder", "reminderDate", "reminderTime"], "where": { "userId": userId }, "limit": parseInt(limit), "offset": ((parseInt(page) - 1) * parseInt(limit)) });
+        if (isGetAllReminders && (isGetAllReminders instanceof Array && isGetAllReminders.length > STATUS?.ZERO)) {
+            tarnsformed = {
+                "page": page ? page : 1,
+                "limit": limit ? limit : 10,
+                "totalRows": totalReminders.length,
+                "rows": isGetAllReminders
+            };
+            return ({ "status": STATUS?.TRUE, "reminders": tarnsformed });
         }
         else {
-            return (await ERROR?.falseResponseAndMessage(MESSAGE?.NOT_EXIST));
+            tarnsformed = {
+                "page": page ? page : 1,
+                "limit": limit ? limit : 10,
+                "totalRows": STATUS?.ZERO,
+                "rows": isGetAllReminders
+            };
+            return ({ "status": STATUS?.TRUE, "reminders": tarnsformed });
         }
     }
     catch (error) {

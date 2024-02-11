@@ -8,6 +8,7 @@ module.exports = () => {
     router.post(URLS?.CREATE, AUTHENTICATION?.verifyUserToken, REMINDER?.CREATE);
     router.get(URLS?.GET, AUTHENTICATION?.verifyUserToken, REMINDER?.GET);
     router.get(URLS?.GET_ALL, AUTHENTICATION?.verifyUserToken, REMINDER?.GET_ALL);
+    router.get(URLS?.SEARCH, AUTHENTICATION?.verifyUserToken, REMINDER?.SEARCH);
     router.put(URLS?.UPDATE, AUTHENTICATION?.verifyUserToken, REMINDER?.UPDATE);
     return router;
 };

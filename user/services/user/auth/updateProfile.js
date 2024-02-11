@@ -6,7 +6,7 @@ const ERROR = require("../../../static/core/error/errors");
 
 module.exports = async (userId, updateDatas) => {
     try {
-        const isUpdatedFields = await User.update(updateDatas, { "where": { "id": userId } });
+        const [isUpdatedFields] = await User.update(updateDatas, { "where": { "id": userId } });
         if (isUpdatedFields > STATUS?.ZERO) {
             return await SUCCESSMESSAGE?.successResponse(MESSAGE?.PROFILE_UPDATE_SUCCESS);
         }

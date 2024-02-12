@@ -2,13 +2,13 @@ const express = require("express");
 const router = express.Router();
 const URLS = require("./urls");
 const REMINDER = require("../../../controllers/reminders/index");
-const AUTHENTICATION = require("../../../middlewares/user/authentications/authentications");
 
 module.exports = () => {
-    router.post(URLS?.CREATE, AUTHENTICATION?.verifyUserToken, REMINDER?.CREATE);
-    router.get(URLS?.GET, AUTHENTICATION?.verifyUserToken, REMINDER?.GET);
-    router.get(URLS?.GET_ALL, AUTHENTICATION?.verifyUserToken, REMINDER?.GET_ALL);
-    router.get(URLS?.SEARCH, AUTHENTICATION?.verifyUserToken, REMINDER?.SEARCH);
-    router.put(URLS?.UPDATE, AUTHENTICATION?.verifyUserToken, REMINDER?.UPDATE);
+    router.post(URLS?.CREATE, REMINDER?.CREATE);
+    router.get(URLS?.GET, REMINDER?.GET);
+    router.get(URLS?.GET_ALL, REMINDER?.GET_ALL);
+    router.get(URLS?.SEARCH, REMINDER?.SEARCH);
+    router.put(URLS?.UPDATE, REMINDER?.UPDATE);
+    router.post(URLS?.DELETE, REMINDER?.DELETE);
     return router;
 };

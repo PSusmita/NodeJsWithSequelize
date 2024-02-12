@@ -5,4 +5,5 @@ module.exports = {
     "GET_ALL": require("./getall"),
     "UPDATE": require("./update"),
     "SEARCH": require("./search"),
+    "DELETE": require("./delete"),
 };

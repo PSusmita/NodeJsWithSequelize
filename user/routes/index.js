@@ -6,5 +6,6 @@ const AUTHENTICATION = require("../middlewares/user/authentications/authenticati
 module.exports = () => {
     router.use(URLS?.USER, require("./user/index")());
     router.use(URLS?.REMINDER, AUTHENTICATION?.verifyUserToken, require("./reminders/crud/index")());
+    router.use(URLS?.NOTE.replace,AUTHENTICATION?.verifyUserToken,require("./notes/crud/index")())
     return router;
 };

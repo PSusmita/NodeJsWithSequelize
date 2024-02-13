@@ -1,4 +1,3 @@
-const User=require("./User");
 module.exports = (sequelize, DataTypes) => {
     const note = sequelize.define("note", {
         "id": {
@@ -9,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
             "type": DataTypes.STRING,
             "allowNull": true,
             "references": {
-                "model": User,
+                "model": "users",
                 "key": "id",
             }
         },

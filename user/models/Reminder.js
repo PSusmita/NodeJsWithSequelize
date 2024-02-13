@@ -1,4 +1,3 @@
-const User = require("./User");
 module.exports = (sequelize, DataTypes) => {
     const reminder = sequelize.define("reminder", {
         "id": {
@@ -9,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
             "type": DataTypes.STRING,
             "allowNull": true,
             "references": {
-                "model": User,
+                "model": "users",
                 "key": "id",
             }
         },
@@ -21,9 +20,9 @@ module.exports = (sequelize, DataTypes) => {
             "type": DataTypes.STRING,
             "allowNull": true
         },
-        "reminderTime":{
-            "type":DataTypes?.STRING,
-            "allowNull":true
+        "reminderTime": {
+            "type": DataTypes?.STRING,
+            "allowNull": true
         }
     });
     return reminder;

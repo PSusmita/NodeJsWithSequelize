@@ -4,7 +4,7 @@ const ERROR = require("../../../static/core/error/errors");
 
 module.exports = async (page, limit, userId) => {
     try {
-        let transformed = {};
+        const transformed = {};
         const totalNotes = await Note.count({ "where": { "userId": userId } });
         const note = await Note.findAll({
             "where": { "userId": userId },
@@ -18,21 +18,24 @@ module.exports = async (page, limit, userId) => {
         });
 
         if (note && note instanceof Array && note.length > STATUS?.ZERO) {
-            transformed = {
+            const obj = {
+                "status": STATUS?.TRUE,
                 "page": page ? parseInt(page) : 1,
                 "totalRows": totalNotes ? totalNotes : STATUS?.ZERO,
                 "rows": note ? note : []
             };
-            return ({ "status": STATUS?.TRUE, "notes": transformed });
+            Object.assign(transformed, obj);
         }
         else {
-            transformed = {
+            const obj = {
+                "status": STATUS?.FALSE,
                 "page": page ? parseInt(page) : 1,
                 "totalRows": totalNotes ? totalNotes : STATUS?.ZERO,
                 "rows": note ? note : []
             };
-            return ({ "status": STATUS?.TRUE, "notes": transformed });
+            Object.assign(transformed, obj);
         }
+        return (transformed);
     }
     catch (error) {
         return (await ERROR?.errorResponse(error));

@@ -4,6 +4,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelizeConnection;
 
+db.admin = require("./Admin")(sequelizeConnection, DataTypes);
 db.user = require("./User")(sequelizeConnection, DataTypes);
 db.reminder = require("./Reminder")(sequelizeConnection, DataTypes);
 db.note = require("./Note")(sequelizeConnection, DataTypes);
@@ -11,7 +12,8 @@ db.note = require("./Note")(sequelizeConnection, DataTypes);
 db.sequelize.sync().then(() => {
     console.log("Tables have been created successfully.");
 });
+const Admin = db.admin;
 const User = db.user;
 const Reminder = db.reminder;
 const Note = db.note;
-module.exports = { User, Reminder, Note };
+module.exports = { User, Reminder, Note, Admin };

@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const ADMIN = require("../../../controllers/admin/auth/index");
 const URLS = require("./urls");
 
 module.exports = () => {
-    router.use(URLS?.AUTH, require("./auth/index")());
+    router.post(URLS?.REGISTER, ADMIN?.REGISTER);
     return router;
-}
+};

@@ -7,6 +7,6 @@ module.exports = () => {
     router.use(URLS?.USER, require("./user/index")());
     router.use(URLS?.REMINDER, AUTHENTICATION?.verifyUserToken, require("./reminders/crud/index")());
     router.use(URLS?.NOTE, AUTHENTICATION?.verifyUserToken, require("./notes/crud/index")());
-    router.use(URLS?.ADMIN, AUTHENTICATION?.verifyUserToken, require("./admin/index")());
+    router.use(URLS?.ADMIN, require("./admin/index")());
     return router;
 };

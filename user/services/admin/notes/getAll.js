@@ -14,13 +14,13 @@ module.exports = async (page, limit, userId) => {
             }],
             "attributes": ["id", "note"],
             "limit": limit ? parseInt(limit) : 10,
-            "offset": page && limit ? ((parseInt(page) - 1) * parseInt(limit)) : 0
+            "offset": page && limit ? ((parseInt(page) - 1) * parseInt(limit)) : STATUS?.ZERO
         });
 
         if (note && (note instanceof Array && note.length > STATUS?.ZERO)) {
             transformed = {
                 "page": page ? parseInt(page) : 1,
-                "totalRows": totalNotes ? totalNotes : 0,
+                "totalRows": totalNotes ? totalNotes : STATUS?.ZERO,
                 "rows": note ? note : []
             };
             return ({ "status": STATUS?.TRUE, "notes": transformed });
@@ -28,7 +28,7 @@ module.exports = async (page, limit, userId) => {
         else {
             transformed = {
                 "page": page ? parseInt(page) : 1,
-                "totalRows": totalNotes ? totalNotes : 0,
+                "totalRows": totalNotes ? totalNotes : STATUS?.ZERO,
                 "rows": note ? note : []
             };
             return ({ "status": STATUS?.TRUE, "notes": transformed });
